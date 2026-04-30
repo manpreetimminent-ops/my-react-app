@@ -7,7 +7,7 @@ function AddTodo({ onAdd }) {
     e.preventDefault();           
     if (!title.trim()) return;   
 
-    const res = await fetch('http://localhost:3000/todos', {
+    const res = await fetch('https://todo-api-production-f59c.up.railway.app/todos', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify({ title }),
