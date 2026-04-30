@@ -7,18 +7,18 @@ function Todos() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:3000/todos')
+    fetch('https://todo-api-production-f59c.up.railway.app/todos')
       .then(r => r.json())
       .then(d => { setTodos(d); setLoading(false); });
   }, []);
 
   const handleAdd      = (t)  => setTodos([t, ...todos]);
   const handleDelete   = async (id) => {
-    await fetch(`http://localhost:3000/todos/${id}`, { method: 'DELETE' });
+    await fetch(`https://todo-api-production-f59c.up.railway.app/todos/${id}`, { method: 'DELETE' });
     setTodos(todos.filter(t => t._id !== id));
   };
   const handleComplete = async (id) => {
-    const res = await fetch(`http://localhost:3000/todos/${id}`, {
+    const res = await fetch(`https://todo-api-production-f59c.up.railway.app/todos/${id}`, {
       method: 'PUT', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ completed: true }),
     });
